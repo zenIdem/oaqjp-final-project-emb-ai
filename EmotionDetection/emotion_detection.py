@@ -1,3 +1,4 @@
+#funzione che prende in input un testo e restituisce un dizionario con le emozioni e la dominante
 import requests
 import json
 
@@ -6,6 +7,7 @@ def emotion_detector(text_to_analyze):
     header = {"grpc-metadata-mm-model-id": "emotion_aggregated-workflow_lang_en_stock"}
     myobj = { "raw_document": { "text": text_to_analyze } }
     response = requests.post(url, json = myobj, headers=header)
+    #gestione del caso in cui il testo non è valido, restituisce un dizionario con tutte le emozioni a None
     if response.status_code == 400:
         return {"anger": None, "disgust": None, "fear": None, "joy": None, "sadness": None, "dominant_emotion": None}
     d = json.loads(response.text)
