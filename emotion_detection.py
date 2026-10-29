@@ -11,4 +11,6 @@ def emotion_detector(text_to_analyze):
     emozioni_rate = dict(zip(o.values(), o.keys()))
     emozione_forte=max(emozioni_rate.keys())
     tipoemozione_forte = emozioni_rate[emozione_forte]
-    return tipoemozione_forte
+    dizionarioemozioni=o
+    dizionarioemozioni['dominant_emotion']=tipoemozione_forte
+    return dizionarioemozioni 
